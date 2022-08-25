@@ -24,7 +24,8 @@ jobs:
           sudo apt-get install xvfb
           sudo npm install -g pxt
           npm install
-      - name: pxt ci
+      - name: pxt
         run: |
+          pxt install
           pxt target microbit
           pxt deploy
