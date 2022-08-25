@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [13.x]
+        node-version: [14.x]
         
     steps:
       - uses: actions/checkout@v3
@@ -19,10 +19,10 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-      - name: Install yarn
-        run: npm install -g yarn
-      - name: Compile and test
+      - name: npm install
         run: |
-          yarn
-          yarn build
-          yarn test
+          sudo apt-get install xvfb
+          sudo npm install -g pxt
+          npm install
+      - name: pxt ci
+        run: pxt ci
