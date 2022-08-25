@@ -25,4 +25,6 @@ jobs:
           sudo npm install -g pxt
           npm install
       - name: pxt ci
-        run: pxt ci
+        run: |
+          pxt target microbit
+          pxt ci
