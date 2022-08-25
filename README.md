@@ -10,7 +10,7 @@ This repository can be added as an **extension** in MakeCode.
 * click on **Extensions** under the gearwheel menu
 * search for **https://github.com/spartan2909/pxt-snore** and import
 
-## Edit this project ![Build status badge](https://github.com/spartan2909/pxt-snore/workflows/MakeCode/badge.svg)
+## Edit this project [![Build status badge](https://github.com/Spartan2909/pxt-snore/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/Spartan2909/pxt-snore/actions/workflows/pages/pages-build-deployment)
 
 To edit this repository in MakeCode.
 
