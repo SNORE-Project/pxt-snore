@@ -5,8 +5,7 @@
         "core": "*",
         "radio": "*",
         "microphone": "*",
-        "IM01": "github:xinabox/pxt-im01#v0.1.8",
-        "microbit-pxt-timeanddate": "github:bsiever/microbit-pxt-timeanddate#v2.0.25"
+        "IM01": "github:xinabox/pxt-im01#v0.1.8"
     },
     "files": [
         "main.ts",
