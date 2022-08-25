@@ -1,4 +1,4 @@
-"scripts" {
+"scripts": {
   "test": "jest",
   "build": "tsc"
 }
