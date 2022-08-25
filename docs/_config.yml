@@ -8,3 +8,4 @@ plugins:
 include:
   - assets
   - README.md
+baseurl: /pxt-snore/docs/
