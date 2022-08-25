@@ -12,7 +12,7 @@ This repository can be added as an **extension** in MakeCode.
 * open [https://makecode.microbit.org/](https://makecode.microbit.org/)
 * click on **New Project**
 * click on **Extensions** under the gearwheel menu
-* search for **https://github.com/spartan2909/pxt-snore** and import
+* search for **Spartan2909/pxt-snore** and import
 
 ## Edit this project 
 
@@ -20,7 +20,7 @@ To edit this repository in MakeCode.
 
 * open [https://makecode.microbit.org/](https://makecode.microbit.org/)
 * click on **Import** then click on **Import URL**
-* paste **https://github.com/spartan2909/pxt-snore** and click import
+* paste **https://github.com/Spartan2909/pxt-snore** and click import
 
 #### Metadata (used for search, rendering)
 
