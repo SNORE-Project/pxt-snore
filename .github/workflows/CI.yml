@@ -19,7 +19,10 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-      - name: Install dependencies
-        run: yarn install
-      - name: Compile
-        uses: icrawl/action-tsc@v1
+      - name: Install yarn
+        run: nmp install -g yarn
+      - name: Compile and test
+        run: |
+          yarn
+          yarn build
+          yarn test
