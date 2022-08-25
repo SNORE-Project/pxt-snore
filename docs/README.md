@@ -1,3 +1,5 @@
+layout: default
+
 > Open this page at [https://spartan2909.github.io/pxt-snore/](https://spartan2909.github.io/pxt-snore/)
 
 # pxt-snore [![test result](https://img.shields.io/github/workflow/status/Spartan2909/pxt-snore/CI?label=tests)](https://github.com/Spartan2909/pxt-snore/actions/workflows/CI.yml)
