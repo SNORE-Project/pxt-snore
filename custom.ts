@@ -8,14 +8,14 @@ namespace snore {
     interface DataStore {
         accel: number,
         pulse: number,
-        sound?: number,
+        vol?: number,
         bpData?: Array<number>
     }
 
     const statStore: DataStore = {
         accel: 0,
         pulse: 0,
-        sound: 0
+        vol: 0
     };
 
     const watchStore: DataStore = {
@@ -58,7 +58,7 @@ namespace snore {
     export function initialise(): void {
         day = getCurrentDay();
 
-        IM01.overwriteFile(`${formatDay(day)}.csv`, "accel,pulse,sound\n");
+        IM01.overwriteFile(`${formatDay(day)}.csv`, "accel,pulse,vol\n");
         IM01.overwriteFile("id.txt", control.deviceSerialNumber().toString());
     }
 
@@ -79,15 +79,15 @@ namespace snore {
      */
     //% block="store data" group="Stationary"
     export function storeData(): void {
-        IM01.appendFileLine(`${control.deviceSerialNumber()}-${formatDay(day)}.csv`, `${statStore.accel},${statStore.pulse},${statStore.sound}`)
+        IM01.appendFileLine(`${control.deviceSerialNumber()}-${formatDay(day)}.csv`, `${statStore.accel},${statStore.pulse},${statStore.vol}`)
     }
 
     /**
      * Store the current volume to temporary storage
      */
     //% block="store volume" group="Stationary"
-    export function storeSound(): void {
-        statStore.sound = input.soundLevel();
+    export function storeVolume(): void {
+        statStore.vol = input.soundLevel();
     }
 
     // Wristwatch
