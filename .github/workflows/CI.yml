@@ -27,4 +27,4 @@ jobs:
       - name: pxt ci
         run: |
           pxt target microbit
-          pxt ci
+          pxt deploy
