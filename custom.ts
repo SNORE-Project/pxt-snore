@@ -24,13 +24,29 @@ namespace snore {
         bpData: []
     };
 
-    let accelAvg: number;
-    let pulse: number;
-    let sound: number;
+    let day: number;
 
-    function getCurrentDay(): string {
-        basic.showString(timeanddate.dateTime());
-        return timeanddate.dateTime().slice(8, 10);
+    function formatDay(givenDay: number): string {
+        let output = givenDay.toString();
+        if (output.length == 1) {
+            return "0" + output
+        } else {
+            return output
+        }
+    }
+
+    function getCurrentDay(): number {
+        let latest = 1;
+        let go = true; 
+        while (go) {
+            if (IM01.fileExists(`${formatDay(day)}.csv`)) {
+                latest++;
+            } else {
+                go = false;
+            }
+        }
+
+        return latest
     }
 
     // Stationary
@@ -40,10 +56,9 @@ namespace snore {
      */
     //% block="initialise" group="Stationary"
     export function initialise(): void {
-        timeanddate.setDate(1, 1, 0);
-        timeanddate.set24HourTime(5, 0, 0);
+        day = getCurrentDay();
 
-        IM01.overwriteFile(`${getCurrentDay()}.csv`, "accel,pulse,sound\n");
+        IM01.overwriteFile(`${formatDay(day)}.csv`, "accel,pulse,sound\n");
         IM01.overwriteFile("id.txt", control.deviceSerialNumber().toString());
     }
 
@@ -64,7 +79,7 @@ namespace snore {
      */
     //% block="store data" group="Stationary"
     export function storeData(): void {
-        IM01.appendFileLine(`${control.deviceSerialNumber()}-${getCurrentDay()}.csv`, `${statStore.accel},${statStore.pulse},${statStore.sound}`)
+        IM01.appendFileLine(`${control.deviceSerialNumber()}-${formatDay(day)}.csv`, `${statStore.accel},${statStore.pulse},${statStore.sound}`)
     }
 
     /**
