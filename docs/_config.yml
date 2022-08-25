@@ -2,7 +2,7 @@ makecode:
   target: microbit
   platform: microbit
   home_url: https://makecode.microbit.org/
-remote-theme: pages-themes/slate@v0.2.0
+theme: slate
 plugins:
   - jekyll-remote-theme
 include:
