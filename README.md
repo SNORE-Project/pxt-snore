@@ -1,6 +1,10 @@
 
 > Open this page at [https://spartan2909.github.io/pxt-snore/](https://spartan2909.github.io/pxt-snore/)
 
+# pxt-snore [![CI](https://github.com/Spartan2909/pxt-snore/actions/workflows/CI.yml/badge.svg)](https://github.com/Spartan2909/pxt-snore/actions/workflows/CI.yml)
+
+An extension to help with the development of code for the SNORE project
+
 ## Use as Extension
 
 This repository can be added as an **extension** in MakeCode.
@@ -10,7 +14,7 @@ This repository can be added as an **extension** in MakeCode.
 * click on **Extensions** under the gearwheel menu
 * search for **https://github.com/spartan2909/pxt-snore** and import
 
-## Edit this project [![CI](https://github.com/Spartan2909/pxt-snore/actions/workflows/CI.yml/badge.svg)](https://github.com/Spartan2909/pxt-snore/actions/workflows/CI.yml)
+## Edit this project 
 
 To edit this repository in MakeCode.
 
