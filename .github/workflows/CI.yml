@@ -26,6 +26,6 @@ jobs:
           npm install
       - name: pxt
         run: |
-          pxt install
           pxt target microbit
+          pxt install
           pxt deploy
