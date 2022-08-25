@@ -3,7 +3,7 @@ name: CI
 on:
   push:
     branches: [main]
-    paths-ignore: ["**.md", ".vscode/**"]
+    paths-ignore: ["**.md", ".vscode/**", "docs/**"]
   pull_request:
     branches: [main]
     
