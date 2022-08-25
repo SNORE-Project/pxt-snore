@@ -29,5 +29,5 @@ jobs:
         run: |
           pxt target microbit
           pxt install
-          pxt build
+          pxt ci
           pxt test
