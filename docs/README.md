@@ -1,4 +1,4 @@
-layout: default
+layout: page
 
 > Open this page at [https://spartan2909.github.io/pxt-snore/](https://spartan2909.github.io/pxt-snore/)
 
