@@ -3,7 +3,7 @@ name: CI
 on:
   push:
     branches: [main]
-    paths-ignore: ["**.md", ".vscode/**", "docs/**", "_config.yml", "Gemfile"]
+    paths-ignore: ["**.md", ".vscode/**", "docs/**", "_config.yml", "Gemfile", ".github/workflows/pages.yml"]
   pull_request:
     branches: [main]
     
