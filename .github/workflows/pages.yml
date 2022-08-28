@@ -5,7 +5,7 @@ on:
   # Runs on pushes targeting the default branch
   push:
     branches: ["main"]
-    paths: ["docs/**", ".github/workflows/pages.yml", "_config.yml"]
+    paths: ["docs/**", ".github/workflows/pages.yml"]
     
   workflow_run:
     workflows: ["CI"]
