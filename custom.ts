@@ -79,7 +79,7 @@ namespace snore {
      */
     //% block="store data" group="Stationary"
     export function storeData(): void {
-        IM01.appendFileLine(`${control.deviceSerialNumber()}-${formatDay(day)}.csv`, `${statStore.accel},${statStore.pulse},${statStore.vol}`)
+        IM01.appendFileLine(`${formatDay(day)}.csv`, `${statStore.accel},${statStore.pulse},${statStore.vol}`)
     }
 
     /**
