@@ -3,7 +3,7 @@
  */
 //% weight=10 color=#0E1525 icon="\uf236" groups=["Wristwatch", "Stationary"]
 namespace snore {
-    radio.setGroup(0);
+    radio.setGroup(9);
 
     interface DataStore {
         accel: number,
