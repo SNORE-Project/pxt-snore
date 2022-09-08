@@ -21,7 +21,7 @@ namespace snore {
     const watchStore: DataStore = {
         accel: 0,
         pulse: 0,
-        bpData: [
+        bpData: []
     };
 
     let day: number;
