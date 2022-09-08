@@ -1,1 +1,1 @@
-let a: number = 3;
+let a: number = 'a';
