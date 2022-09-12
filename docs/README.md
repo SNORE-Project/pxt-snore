@@ -7,7 +7,9 @@ permalink: /
 
 # pxt-snore [![test result](https://img.shields.io/github/workflow/status/Spartan2909/pxt-snore/CI?label=tests)](https://github.com/Spartan2909/pxt-snore/actions/workflows/CI.yml)
 
-An extension to help with the development of code for the SNORE project.
+An extension to help with the development of code for the SNORE project. 
+
+Download the latest version here: https://github.com/SNORE-Project/pxt-snore/releases/latest/
 
 ## Use as Extension
 
