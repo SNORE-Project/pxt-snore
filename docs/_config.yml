@@ -9,3 +9,4 @@ include:
   - assets
   - README.md
 baseurl: /pxt-snore/
+show_downloads: true
