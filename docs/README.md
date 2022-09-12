@@ -9,7 +9,7 @@ permalink: /
 
 An extension to help with the development of code for the SNORE project. 
 
-Download the latest version here: https://github.com/SNORE-Project/pxt-snore/releases/latest/
+Download the latest version here: [pxt-snore/releases/latest](https://github.com/SNORE-Project/pxt-snore/releases/latest/)
 
 ## Use as Extension
 
