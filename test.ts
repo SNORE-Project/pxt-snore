@@ -1,1 +1,12 @@
-// tests go here; this will not be compiled when this package is used as an extension.
+// Initialise
+snore.initialise();
+radio.onReceivedValue(snore.storeData)
+
+// Wristwatch tests
+snore.recordAccel();
+snore.recordBP();
+snore.recordVol();
+snore.sendData();
+
+// Stationary tests
+snore.storeData();
