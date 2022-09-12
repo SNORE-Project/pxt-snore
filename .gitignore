@@ -10,6 +10,9 @@ _site
 .header.json
 .simstate.json
 
+# Node stuff
+.build/
+package-lock.json
 
 # Replit stuff
 .replit
