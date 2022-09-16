@@ -1,5 +1,5 @@
 /**
- * Custom blocks
+ * SNORE helper functions
  */
 //% weight=10 color=#0E1525 icon="\uf236" groups=["Wristwatch", "Stationary"]
 namespace snore {
@@ -29,9 +29,9 @@ namespace snore {
     function formatDay(givenDay: number): string {
         let output = givenDay.toString();
         if (output.length == 1) {
-            return "0" + output
+            return "0" + output;
         } else {
-            return output
+            return output;
         }
     }
 
@@ -46,7 +46,7 @@ namespace snore {
             }
         }
 
-        return latest
+        return latest;
     }
 
     // Stationary
@@ -71,6 +71,8 @@ namespace snore {
             statStore.accel = value;
         } else if (name == "pulse") {
             statStore.pulse = value;
+        } else if (name == "vol") {
+            statStore.vol = value;
         }
     }
 
@@ -119,5 +121,6 @@ namespace snore {
     export function sendData(): void {
         radio.sendValue("accel", watchStore.accel);
         // TODO calculate and send pulse
+        radio.sendValue("vol", watchStore.vol);
     }
 }
