@@ -49,6 +49,16 @@ namespace snore {
         return latest;
     }
 
+    function avg(arr: Array<number>): number {
+        let total = 0;
+
+        for (let i = 0; i < arr.length; i++) {
+            total += arr[i];
+        }
+
+        return total / arr.length;
+    }
+
     // Stationary
 
     /**
@@ -111,7 +121,7 @@ namespace snore {
      */
     //% block="record blood pressure" group="Wristwatch"
     export function recordBP(): void {
-        // TODO
+        watchStore.bpData.push(pins.analogReadPin(AnalogPin.P0));
     }
 
     /**
@@ -120,7 +130,7 @@ namespace snore {
     //% block="send data" group="Wristwatch"
     export function sendData(): void {
         radio.sendValue("accel", watchStore.accel);
-        // TODO calculate and send pulse
+        radio.sendValue("pulse", avg(watchStore.bpData))
         radio.sendValue("vol", watchStore.vol);
     }
 }
