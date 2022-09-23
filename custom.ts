@@ -111,7 +111,7 @@ namespace snore {
      */
     //% block="record blood pressure" group="Wristwatch"
     export function recordBP(): void {
-        // TODO
+        watchStore.bpData.push(pins.analogReadPin(AnalogPin.P0));
     }
 
     /**
