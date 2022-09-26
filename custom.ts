@@ -120,7 +120,12 @@ namespace snore {
     //% block="send data" group="Wristwatch"
     export function sendData(): void {
         radio.sendValue("accel", watchStore.accel);
-        // TODO calculate and send pulse
+        let total = 0;
+        for (let i = 0; i < watchStore.bpData.length; i++) {
+            total += watchStore.bpData[i];
+        }
+        radio.sendValue("pulse", (total / watchStore.bpData.length) * 300);
+        watchStore.bpData = [];
         radio.sendValue("vol", watchStore.vol);
     }
 }
