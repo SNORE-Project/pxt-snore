@@ -4,6 +4,9 @@
 //% weight=10 color=#0E1525 icon="\uf236" groups=["Wristwatch", "Stationary"]
 namespace snore {
     radio.setGroup(0);
+    
+    export const intervalSize = 200;
+    export const bpMeasuresPerInterval = 20;
 
     interface DataStore {
         accel: number,
@@ -124,7 +127,7 @@ namespace snore {
         for (let i = 0; i < watchStore.bpData.length; i++) {
             total += watchStore.bpData[i];
         }
-        radio.sendValue("pulse", (total / watchStore.bpData.length) * 300);
+        radio.sendValue("pulse", (total / watchStore.bpData.length) * (60000 / intervalSize));
         watchStore.bpData = [];
         radio.sendValue("vol", watchStore.vol);
     }
