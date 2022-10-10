@@ -27,13 +27,15 @@ namespace snore {
         bpData: []
     };
 
-    let day: number;
+    let day = 1;
 
     function formatDay(givenDay: number): string {
         let output = givenDay.toString();
         if (output.length == 1) {
+            //basic.showString("added 0");
             return "0" + output;
         } else {
+            //basic.showString("no added 0");
             return output;
         }
     }
@@ -42,13 +44,16 @@ namespace snore {
         let latest = 1;
         let go = true; 
         while (go) {
-            if (IM01.fileExists(`${formatDay(day)}.csv`)) {
+            if (IM01.fileExists(`${formatDay(latest)}.csv`)) {
+                //basic.showString(`file ${formatDay(latest)}.csv exists`);
                 latest++;
             } else {
+                //basic.showString(`file ${formatDay(latest)}.csv is valid`);
                 go = false;
             }
         }
 
+        //basic.showString(`day is ${latest}`)
         return latest;
     }
 
@@ -61,8 +66,12 @@ namespace snore {
     export function initialise(): void {
         day = getCurrentDay();
 
+        IM01.turn_off_leds();
+
         IM01.overwriteFile(`${formatDay(day)}.csv`, "accel,pulse,vol\n");
         IM01.overwriteFile("id.txt", control.deviceSerialNumber().toString());
+
+        //basic.showString("finished initialising");
     }
 
     /**
@@ -127,7 +136,8 @@ namespace snore {
         for (let i = 0; i < watchStore.bpData.length; i++) {
             total += watchStore.bpData[i];
         }
-        radio.sendValue("pulse", (total / watchStore.bpData.length) * (60000 / intervalSize));
+        let pulse = (total / watchStore.bpData.length) * (60000 / intervalSize);
+        radio.sendValue("pulse", pulse);
         watchStore.bpData = [];
         radio.sendValue("vol", watchStore.vol);
     }
