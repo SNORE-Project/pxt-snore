@@ -8,26 +8,20 @@ namespace snore {
     export const intervalSize = 200;
     export const bpMeasuresPerInterval = 20;
 
-    interface DataStore {
-        accel: number,
-        pulse?: number,
-        vol: number,
-        bpData?: Array<number>
-    }
-
-    const statStore: DataStore = {
+    const statStore  = {
         accel: 0,
         pulse: 0,
-        vol: 0
+        vol: 0,
+        recieved: false
     };
 
-    const watchStore: DataStore = {
+    const watchStore = {
         accel: 0,
         vol: 0,
-        bpData: []
+        bpData: <Array<number>>[]
     };
 
-    let day = 1;
+    let day = -1;
 
     function formatDay(givenDay: number): string {
         let output = givenDay.toString();
@@ -75,10 +69,12 @@ namespace snore {
     }
 
     /**
-    * Save received data to temporary storage
-    */
+     * Save received data to temporary storage
+     */
     //% block="receive data" group="Stationary"
     export function receiveData(name: string, value: number): void {
+        statStore.recieved = true;
+
         if (name == "accel") {
             statStore.accel = value;
         } else if (name == "pulse") {
@@ -93,7 +89,10 @@ namespace snore {
      */
     //% block="store data" group="Stationary"
     export function storeData(): void {
-        IM01.appendFileLine(`${formatDay(day)}.csv`, `${statStore.accel},${statStore.pulse},${statStore.vol}`)
+        if (statStore.recieved) {
+            IM01.appendFileLine(`${formatDay(day)}.csv`, `${statStore.accel},${statStore.pulse},${statStore.vol}`)
+        }
+        statStore.recieved = true
     }
 
     // Wristwatch
