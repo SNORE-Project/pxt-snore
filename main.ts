@@ -78,8 +78,10 @@ namespace snore {
 
         if (name == "accel") {
             statStore.accel = value;
+        /*
         } else if (name == "pulse") {
             statStore.pulse = value;
+        */
         } else if (name == "vol") {
             statStore.vol = value;
         }
