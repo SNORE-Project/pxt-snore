@@ -10,8 +10,9 @@ namespace snore {
 
     const statStore  = {
         accel: 0,
-        pulse: 0,
+        //pulse: 0,
         vol: 0,
+        bpData: "",
         recieved: false
     };
 
@@ -62,7 +63,7 @@ namespace snore {
 
         IM01.turn_off_leds();
 
-        IM01.overwriteFile(`${formatDay(day)}.csv`, "accel,pulse,vol\n");
+        IM01.overwriteFile(`${formatDay(day)}.csv`, "accel,vol,pulseData\n");
         IM01.overwriteFile("id.txt", control.deviceSerialNumber().toString());
 
         //basic.showString("finished initialising");
@@ -85,14 +86,22 @@ namespace snore {
     }
 
     /**
+     * Save recieved pulse data to temporary storage
+     */
+    //% block="recieve pulse" group="Stationary"
+    export function recievePulse(data: string): void {
+        statStore.bpData = data;
+    }
+
+    /**
      * Save the data in temporary storage to the sd card
      */
     //% block="store data" group="Stationary"
     export function storeData(): void {
         if (statStore.recieved) {
-            IM01.appendFileLine(`${formatDay(day)}.csv`, `${statStore.accel},${statStore.pulse},${statStore.vol}`)
+            IM01.appendFileLine(`${formatDay(day)}.csv`, `${statStore.accel},${statStore.vol},${statStore.bpData}`)
         }
-        statStore.recieved = true
+        statStore.recieved = true;
     }
 
     // Wristwatch
@@ -135,9 +144,16 @@ namespace snore {
         for (let i = 0; i < watchStore.bpData.length; i++) {
             total += watchStore.bpData[i];
         }
+        /*
         let pulse = (total / watchStore.bpData.length) * (60000 / intervalSize);
         radio.sendValue("pulse", pulse);
         watchStore.bpData = [];
+        */
         radio.sendValue("vol", watchStore.vol);
+        let bpData = "";
+        for (let i = 0; i < watchStore.bpData.length; i++) {
+            bpData += `${watchStore.bpData[i]},`;
+        }
+        radio.sendString(bpData);
     }
 }
