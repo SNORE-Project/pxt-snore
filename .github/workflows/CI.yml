@@ -29,5 +29,6 @@ jobs:
         run: |
           pxt target microbit
           pxt install
+          npm update
           pxt build
           pxt test
