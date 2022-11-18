@@ -154,7 +154,7 @@ namespace snore {
         radio.sendValue("vol", watchStore.vol);
         let bpData = "";
         for (let i = 0; i < watchStore.bpData.length; i++) {
-            bpData += `${watchStore.bpData[i]},`;
+            bpData += `${watchStore.bpData[i]};`;
         }
         watchStore.bpData = [];
         radio.sendString(bpData);
