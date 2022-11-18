@@ -133,7 +133,7 @@ namespace snore {
      */
     //% block="record blood pressure" group="Wristwatch"
     export function recordBP(): void {
-        watchStore.bpData.push(pins.digitalReadPin(DigitalPin.P0));
+        watchStore.bpData.push(pins.analogReadPin(AnalogPin.P0));
     }
 
     /**
