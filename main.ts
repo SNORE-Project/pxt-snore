@@ -103,6 +103,7 @@ namespace snore {
         if (statStore.recieved) {
             IM01.appendFileLine(`${formatDay(day)}.csv`, `${statStore.accel},${statStore.vol},${statStore.bpData}`)
         }
+        statStore.bpData = "blank";
         statStore.recieved = true;
     }
 
