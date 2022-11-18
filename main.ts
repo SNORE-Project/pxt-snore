@@ -156,6 +156,7 @@ namespace snore {
         for (let i = 0; i < watchStore.bpData.length; i++) {
             bpData += `${watchStore.bpData[i]},`;
         }
+        watchStore.bpData = [];
         radio.sendString(bpData);
     }
 }
