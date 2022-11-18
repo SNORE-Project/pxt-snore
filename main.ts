@@ -12,7 +12,7 @@ namespace snore {
         accel: 0,
         //pulse: 0,
         vol: 0,
-        bpData: "",
+        bpData: "blank",
         recieved: false
     };
 
