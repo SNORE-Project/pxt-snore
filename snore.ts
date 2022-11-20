@@ -29,7 +29,7 @@ namespace snore {
      */
     //% block="initialise" group="Stationary"
     export function initialise(): void {
-        IM01.overwriteFile("serial.txt", `${control.deviceSerialNumber().toString()}\n${control.deviceName()}`);
+        IM01.overwriteFile("info.txt", `${control.deviceSerialNumber().toString()}\n${control.deviceName()}`);
         IM01.appendFile("data.csv", "accel,vol,pulseData\n");
 
         IM01.turn_off_leds();
@@ -64,7 +64,7 @@ namespace snore {
      */
     //% block="store data" group="Stationary"
     export function storeData(): void {
-        IM01.appendFileLine("data.csv", `${statStore.accel},${statStore.vol},${statStore.bpData}`)
+        IM01.appendFileLine("data.csv", `${statStore.accel},${statStore.vol},${statStore.bpData}`);
         statStore.bpData = "";
     }
     
