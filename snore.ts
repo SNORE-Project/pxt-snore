@@ -7,6 +7,7 @@ namespace snore {
     
     export const intervalSize = 200;
     export const bpMeasuresPerInterval = 20;
+    export let version = "";
 
     const statStore  = {
         accel: 0,
