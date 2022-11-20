@@ -14,6 +14,9 @@ _site
 .build/
 package-lock.json
 
+# Python stuff
+venv/
+
 # Replit stuff
 .replit
 replit.nix
