@@ -6,29 +6,8 @@ on:
     paths-ignore: ["**.md", ".vscode/**", "docs/**", ".github/workflows/pages.yml"]
   pull_request:
     branches: [main]
+  workflow_dispatch:
     
 jobs:
   test:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: ["14.x", "16.x"]
-        
-    steps:
-      - uses: actions/checkout@v3
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
-      - name: npm install
-        run: |
-          sudo apt-get install xvfb
-          sudo npm install -g pxt
-          npm install
-      - name: pxt
-        run: |
-          pxt target microbit
-          pxt install
-          npm update
-          pxt build
-          pxt test
+    uses: SNORE-Project/.github/.github/workflows/build.yml@main
