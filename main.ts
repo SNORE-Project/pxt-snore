@@ -12,8 +12,7 @@ namespace snore {
         accel: 0,
         //pulse: 0,
         vol: 0,
-        bpData: "blank",
-        recieved: false
+        bpData: ""
     };
 
     const watchStore = {
@@ -22,35 +21,6 @@ namespace snore {
         bpData: <Array<number>>[]
     };
 
-    let day = -1;
-
-    function formatDay(givenDay: number): string {
-        let output = givenDay.toString();
-        if (output.length == 1) {
-            //basic.showString("added 0");
-            return "0" + output;
-        } else {
-            //basic.showString("no added 0");
-            return output;
-        }
-    }
-
-    function getCurrentDay(): number {
-        let latest = 1;
-        let go = true; 
-        while (go) {
-            if (IM01.fileExists(`${formatDay(latest)}.csv`)) {
-                //basic.showString(`file ${formatDay(latest)}.csv exists`);
-                latest++;
-            } else {
-                //basic.showString(`file ${formatDay(latest)}.csv is valid`);
-                go = false;
-            }
-        }
-
-        //basic.showString(`day is ${latest}`)
-        return latest;
-    }
 
     // Stationary
 
@@ -59,14 +29,10 @@ namespace snore {
      */
     //% block="initialise" group="Stationary"
     export function initialise(): void {
-        day = getCurrentDay();
+        IM01.overwriteFile("id.txt", `${control.deviceSerialNumber().toString()}\n${control.deviceName()}`);
+        IM01.appendFile("data.csv", "accel,vol,pulseData\n");
 
         IM01.turn_off_leds();
-
-        IM01.overwriteFile(`${formatDay(day)}.csv`, "accel,vol,pulseData\n");
-        IM01.overwriteFile("id.txt", control.deviceSerialNumber().toString());
-
-        //basic.showString("finished initialising");
     }
 
     /**
@@ -74,8 +40,6 @@ namespace snore {
      */
     //% block="receive data" group="Stationary"
     export function receiveData(name: string, value: number): void {
-        statStore.recieved = true;
-
         if (name == "accel") {
             statStore.accel = value;
         /*
@@ -92,7 +56,7 @@ namespace snore {
      */
     //% block="recieve pulse" group="Stationary"
     export function recievePulse(data: string): void {
-        statStore.bpData = data;
+        statStore.bpData += data;
     }
 
     /**
@@ -100,12 +64,10 @@ namespace snore {
      */
     //% block="store data" group="Stationary"
     export function storeData(): void {
-        if (statStore.recieved) {
-            IM01.appendFileLine(`${formatDay(day)}.csv`, `${statStore.accel},${statStore.vol},${statStore.bpData}`)
-        }
-        statStore.bpData = "blank";
-        statStore.recieved = true;
+        IM01.appendFileLine("data.csv", `${statStore.accel},${statStore.vol},${statStore.bpData}`)
+        statStore.bpData = "";
     }
+    
 
     // Wristwatch
 
@@ -143,22 +105,29 @@ namespace snore {
     //% block="send data" group="Wristwatch"
     export function sendData(): void {
         radio.sendValue("accel", watchStore.accel);
+        /*
         let total = 0;
         for (let i = 0; i < watchStore.bpData.length; i++) {
             total += watchStore.bpData[i];
         }
-        /*
+        
         let pulse = (total / watchStore.bpData.length) * (60000 / intervalSize);
         radio.sendValue("pulse", pulse);
         watchStore.bpData = [];
         */
         radio.sendValue("vol", watchStore.vol);
+
+        let done = false;
         let bpData = "";
         for (let i = 0; i < watchStore.bpData.length; i++) {
-            bpData += `${watchStore.bpData[i]};`;
-        }
-        basic.showNumber(watchStore.bpData[0]);
+            let current = watchStore.bpData[i].toString();
+            if (bpData.length + current.length >= 19) {
+                radio.sendString(bpData);
+                bpData = current + ",";
+            } else {
+                bpData += current + ",";
+            }
+        }   
         watchStore.bpData = [];
-        radio.sendString(bpData);
     }
 }
