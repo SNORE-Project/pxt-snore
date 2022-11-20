@@ -8,7 +8,8 @@
         "IM01": "github:xinabox/pxt-im01#v0.1.8"
     },
     "files": [
-        "snore.ts"
+        "snore.ts",
+        "snore.cpp"
     ],
     "testFiles": [
         "test.ts"
