@@ -29,7 +29,7 @@ namespace snore {
      */
     //% block="initialise" group="Stationary"
     export function initialise(): void {
-        IM01.overwriteFile("id.txt", `${control.deviceSerialNumber().toString()}\n${control.deviceName()}`);
+        IM01.overwriteFile("serial.txt", `${control.deviceSerialNumber().toString()}\n${control.deviceName()}`);
         IM01.appendFile("data.csv", "accel,vol,pulseData\n");
 
         IM01.turn_off_leds();
