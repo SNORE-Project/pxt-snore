@@ -31,7 +31,7 @@ namespace snore {
     //% block="initialise" group="Stationary"
     export function initialise(): void {
         IM01.overwriteFile("info.txt", `${control.deviceSerialNumber().toString()}\n${control.deviceName()}\n${version}\n`);
-        IM01.overwriteFile("data.csv", "accel,vol,pulseData\n");
+        IM01.appendFile("data.csv", "accel,vol,pulseData\n");
 
         IM01.turn_off_leds();
     }
@@ -121,16 +121,16 @@ namespace snore {
         radio.sendValue("vol", watchStore.vol);
 
         let done = false;
-        let bpData = "";
-        for (let i = 0; i < watchStore.bpData.length; i++) {
-            let current = watchStore.bpData[i].toString();
-            if (bpData.length + current.length >= 19) {
-                radio.sendString(bpData);
-                bpData = current + ",";
-            } else {
-                bpData += current + ",";
-            }
-        }   
+        let bpData = "^" + watchStore.bpData.join(";") + "$";
         watchStore.bpData = [];
+        let i = 0;
+        while (i < bpData.length) {
+            let lastChar = i + 19;
+            if (lastChar > bpData.length) {
+                lastChar = bpData.length;
+            }
+            radio.sendString(bpData.slice(i, lastChar));
+            i = lastChar;
+        }
     }
 }
