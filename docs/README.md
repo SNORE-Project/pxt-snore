@@ -3,7 +3,7 @@ layout: default
 permalink: /
 ---
 
-# pxt-snore [![test result](https://img.shields.io/github/workflow/status/SNORE-Project/pxt-snore/CI?label=tests&logo=typescript)](https://github.com/SNORE-Project/pxt-snore/actions/workflows/CI.yml)
+# pxt-snore [![test result](https://img.shields.io/github/actions/workflow/status/SNORE-Project/pxt-snore/CI.yml?label=tests&logo=typescript)](https://github.com/SNORE-Project/pxt-snore/actions/workflows/CI.yml)
 
 An extension to help with the development of code for the SNORE project. 
 
