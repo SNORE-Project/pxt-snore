@@ -1,6 +1,7 @@
----
-layout: default
-permalink: /
+# This repository is now archived
+
+All functionality has been moved to the [remote](https://github.com/SNORE-PROJECT/remote) and [wearable](https://github.com/SNORE-PROJECT/wearable) repositories. 
+
 ---
 
 # pxt-snore [![test result](https://img.shields.io/github/actions/workflow/status/SNORE-Project/pxt-snore/CI.yml?label=tests&logo=typescript)](https://github.com/SNORE-Project/pxt-snore/actions/workflows/CI.yml)
